@@ -1,0 +1,9 @@
+#!/bin/sh
+# Description: Script to get current date
+
+source ~/.config/dwmblocks/scripts/sb-status2d
+
+printf "%s%s %s%s" "$s2d_color2" "" "$(date '+%a, %h %d')" "$s2d_reset" && exit 0
+
+
+
