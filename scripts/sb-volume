@@ -1,0 +1,19 @@
+#!/bin/sh
+# Description: Script to get current volume
+
+source ~/.config/dwmblocks/scripts/sb-status2d
+
+info="$(amixer get Master | grep '%' | head -n1)"
+percent="$(echo "$info" | sed -E 's/.*\[(.*)%\].*/\1/')"
+
+if echo "$info" | grep -q 'off'; then
+    icon_volume="婢"
+elif [ "$percent" -lt 20 ]; then
+    icon_volume="奄"
+elif [ "$percent" -lt 60 ]; then
+    icon_volume="奔"
+else
+    icon_volume="墳"
+fi
+
+printf "%s%s %s%%%s" "$s2d_color3" "$icon_volume" "$percent" "$s2d_reset" && exit 0
